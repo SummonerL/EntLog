@@ -7,8 +7,20 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 <h3>Here's all the entertainment you've consumed.</h3>
 <br>
+<select id='filter_type' style='padding:5px;border-radius:5px;margin-left:.2%;outline:none;margin-bottom:1%;'>
+  <option value="">-- Filter by type --</option>
+  <option value="?filter=">Show All</option>
+  <option value="?filter=BO">Books</option>
+  <option value="?filter=GA">Games</option>
+  <option value="?filter=MO">Movies</option>
+  <option value="?filter=AL">Musical Albums</option>
+  <option value="?filter=TV">TV Show</option>
+</select>
 {% if all_entries %}
     <table class='table table-hover table-responsive'>
       <thead>
@@ -31,7 +43,21 @@
 {% else %}
     <p>No entries are available.</p>
 {% endif %}
-<button type='button' class='btn btn-primary' style='margin-left:.2%;'>Add an entry</button>
+<button type='button' class='btn btn-success' style='margin-left:.2%;'>Add an entry</button>
+
+<script>
+$(function(){
+     // bind change event to select
+     $('#filter_type').on('change', function () {
+         var url = $(this).val(); // get selected value
+         if (url) { // require a URL
+             window.location = url; // redirect
+         }
+         return false;
+     });
+   });
+</script>
+
 <style>
 a {
   color:black;
