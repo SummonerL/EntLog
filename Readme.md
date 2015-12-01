@@ -1,1 +1,4 @@
-#EntLog - From movies, to books, to games - keep track of all the entertainment you've consumed.
+#EntLog
+<hr>
+
+An intuitive way to keep track of all the entertainment you've consumed.
