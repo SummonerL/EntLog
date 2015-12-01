@@ -1,4 +1,6 @@
 from django.db import models
+from django.forms import ModelForm
+from django import forms
 
 # Create your models here.
 
@@ -20,3 +22,17 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.name
+
+class EntryForm(ModelForm):
+    class Meta:
+        model = Entry
+        fields = ['name', 'ent_type', 'completion_date','comments']
+        widgets = {
+          'comments': forms.Textarea(attrs={'rows':3, 'cols':40, 'placeholder':'Additional comments'}),
+        }
+    def __init__(self, *args, **kwargs):
+        super(EntryForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget = forms.TextInput(attrs={
+            'placeholder': 'name'})
+        self.fields['completion_date'].widget = forms.TextInput(attrs={
+            'placeholder': 'date of completion'})

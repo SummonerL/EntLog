@@ -1,0 +1,83 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<!-- Load jQuery from Google's CDN -->
+<!-- Load jQuery UI CSS  -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<!-- Load jQuery JS -->
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<!-- Load jQuery UI Main JS  -->
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script>
+$(document).ready(function() {
+  $('[name="completion_date"]').datepicker();
+});
+</script>
+
+<h3 align="center">Add a new entry</h3>
+
+<div id="entry-form" align="center">
+<form role="form" action="" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+
+  {% endfor %}
+  <div class="form-group">
+    {{form.name}}
+  </div>
+  {% if form.name.errors %}
+  <div id='nameError' style='margin:5%'><sup style='color:red;'>Woops. Forgot something.</sup></div>
+  {% endif %}
+  <div class="form-group">
+    {{form.ent_type}}
+  </div>
+  <div class="form-group">
+    {{form.completion_date}}
+  </div>
+  {% if form.completion_date.errors %}
+  <div id='completiondateError' style='margin:5%'><sup style='color:red;'>Umm... try again.</sup></div>
+  {% endif %}
+  <div class="form-group">
+    {{form.comments}}
+  </div>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+
+<style>
+input{
+  padding:5px;
+  outline:none;
+  border:solid 1px #d3d3d3;
+  width:100%
+}
+select{
+  padding:5px;
+  border-radius:5px;
+  margin-left:.2%;
+  outline:none;
+  margin-bottom:1%;
+  border:solid 1px #d3d3d3;
+  width:40%
+}
+form{
+  border:solid 1px #d3d3d3;
+  padding:20px;
+  border-radius:5px;
+  width:20%;
+  text-align:left;
+}
+textarea{
+  border:solid 1px #d3d3d3;
+  width:100%;
+}
+</style>
