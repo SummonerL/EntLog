@@ -1,1 +1,1 @@
-web: gunicorn entlog.wsgi
+web: gunicorn EntLog.wsgi
